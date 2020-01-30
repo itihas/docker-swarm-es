@@ -130,10 +130,13 @@ services:
 
 volumes:
   data01:
+    source: /data01
     driver: local
   data02:
+    source: /data02
     driver: local
   data03:
+    source: /data03
     driver: local
 
 networks:
