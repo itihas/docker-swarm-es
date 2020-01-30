@@ -41,7 +41,7 @@ services:
       resources:
         limits:
           memory: 800M
-       placement:
+      placement:
         constraints:
           - node.labels.id==1
   es01:
