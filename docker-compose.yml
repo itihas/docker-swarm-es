@@ -24,6 +24,9 @@ services:
     deploy:
       mode: replicated
       replicas: 1
+      resources:
+        limits:
+          memory: 50M
   kibana:
     image: docker.elastic.co/kibana/kibana:7.5.1
     environment:
