@@ -10,6 +10,17 @@ services:
         #       placement:
         #         constraints:
         #           - node.labels.id==1
+  nginx:
+    image: nginx:alpine
+    configs:
+      - source: nginx_htpasswd
+        target: /etc/nginx/nginx.htpasswd
+      - source: nginx_config
+        target: /etc/nginx/nginx.conf
+    networks:
+      - elastic
+    ports:
+      - 80:80
   kibana:
     image: docker.elastic.co/kibana/kibana:7.5.1
     environment:
@@ -122,4 +133,8 @@ volumes:
 networks:
   elastic:
     driver: overlay
-
+configs:
+  nginx_config:
+    file: ./nginx.conf
+  nginx_htpasswd:
+    file: ./nginx.htpasswd
