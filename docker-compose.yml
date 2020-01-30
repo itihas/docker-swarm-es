@@ -1,15 +1,23 @@
 version: '3'
 services:
-  cerebro:
-    image: lmenezes/cerebro
+        #   cerebro:
+        #     image: lmenezes/cerebro
+        #     ports:
+        #       - 9000:9000
+        #     networks:
+        #       - elastic
+        #     deploy:
+        #       placement:
+        #         constraints:
+        #           - node.labels.id==1
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.5.1
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es01:9200
     ports:
-      - 9000:9000
+      - 5601:5601
     networks:
       - elastic
-    deploy:
-      placement:
-        constraints:
-          - node.labels.id==1
   es01:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
     environment:
