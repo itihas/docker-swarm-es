@@ -41,6 +41,9 @@ services:
       resources:
         limits:
           memory: 800M
+       placement:
+        constraints:
+          - node.labels.id==1
   es01:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
     environment:
