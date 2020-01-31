@@ -133,12 +133,12 @@ services:
 
 volumes:
   data01:
-    driver: local
+    external: true
   data02:
-    driver: local
+    external: true
   data03:
-    driver: local
-
+    external: true
+q
 networks:
   elastic:
     driver: overlay
